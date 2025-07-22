@@ -1,0 +1,64 @@
+on('ready', function () {
+
+    const sortCharacters = (reverse = false) => {
+        const chars = findObjs({ _type: 'character' });
+
+        const sorted = chars.sort((a, b) => {
+            const nameA = (a.get('name') || '').toLowerCase();
+            const nameB = (b.get('name') || '').toLowerCase();
+            if (nameA < nameB) return reverse ? 1 : -1;
+            if (nameA > nameB) return reverse ? -1 : 1;
+            return 0;
+        });
+
+        sorted.forEach((char, idx) => {
+            char.set('archived', false); // Unarchive to make sure it's visible
+            char.set('sortorder', idx);  // Set sort order explicitly
+        });
+
+        sendChat('CharacterSorter', `/w gm Characters ${reverse ? 'reverse-' : ''}alphabetically sorted.`);
+    };
+
+    const deleteCharactersByLetter = (letter) => {
+        const allChars = findObjs({ _type: 'character' });
+
+        const toDelete = allChars.filter(char => {
+            const name = char.get('name') || '';
+            return name.charAt(0).toLowerCase() === letter;
+        });
+
+        if (toDelete.length === 0) {
+            sendChat('CharacterDeleter', `/w gm No characters found starting with "${letter.toUpperCase()}".`);
+            return;
+        }
+
+        toDelete.forEach(char => char.remove());
+
+        sendChat('CharacterDeleter', `/w gm Deleted ${toDelete.length} character(s) starting with "${letter.toUpperCase()}".`);
+    };
+
+    on('chat:message', function (msg) {
+        if (msg.type !== 'api') return;
+
+        const args = msg.content.trim().split(/\s+/);
+
+        if (args[0] === '!deleteCharacters') {
+            if (!args[1]) {
+                sendChat('CharacterDeleter', `/w gm Usage: !deleteCharacters a`);
+                return;
+            }
+            const letter = args[1].toLowerCase();
+            deleteCharactersByLetter(letter);
+        }
+
+        if (args[0] === '!sortCharacters') {
+            if (!args[1] || !['a', 'z'].includes(args[1].toLowerCase())) {
+                sendChat('CharacterSorter', `/w gm Usage: !sortCharacters a  OR  !sortCharacters z`);
+                return;
+            }
+
+            const reverse = args[1].toLowerCase() === 'z';
+            sortCharacters(reverse);
+        }
+    });
+});
