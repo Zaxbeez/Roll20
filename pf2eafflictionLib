@@ -1,0 +1,292 @@
+--/|ScriptCards Library: pf2eafflictionLib
+--/|Provides affliction descriptions and actions for PF2e games
+
+--/|Card Settings
+    --&h1|style="font-size:24px; text-align:center; width:105%; height: 30px; font-family: Helvetica"
+    --&h2|style="font-size:16px; text-align:center; border-bottom-style: solid; border-bottom-color: #ffffff; border-bottom-width: 1px; font-family: Helvetica"
+    --&button|style="font-size:10px; text-align:left; font-family: Tahoma".
+
+--:pf2e_AFFLICTIONS|Affliction Name
+    --&Affliction_Name_Unformatted|[&reentryval]
+    --&Affliction_Name|[&Affliction_Name_Unformatted(touppercase)]
+    --&Affliction_Name|[&Affliction_Name(replaceall, ,_)]
+    --^_[&Affliction_Name]_INFORMATION|
+    --X|
+
+    --:PRINT_AFFLICTION_DATA|
+    --#title|[&Affliction_Name]
+    --#leftsub|[?"X[&Affliction_Level]" -ne "X"|Level [&Affliction_Level]|]
+    --#rightsub|[?"X[&Affliction_DC]" -ne "X"|DC [&Affliction_DC] [&Affliction_Save_Type] Save|]
+    --?"X[&Affliction_Max_Duration]" -ne "X"|&cellwidth;70px|&cellwidth;60px
+        --&output|
+            --&output|+[t]
+            --&output|+[tr][td colspan = "2" style="text-align: center;font-size:18px; height:25px"][&Affliction_Name][/td][/tr]
+            --?"X[&Affliction_Traits]" -ne "X"|&output;+[tr][td]Traits: [/td][td][&Affliction_Traits][/td][/tr]|
+            --?"X[&Affliction_Stage_1]" -ne "X"|&output;+[tr style="vertical-align: top"][td style="width:[&cellwidth]"]Stage 1: [/td][td][&Affliction_Stage_1][/td][/tr]|
+            --?"X[&Affliction_Stage_2]" -ne "X"|&output;+[tr style="vertical-align: top"][td]Stage 2: [/td][td][&Affliction_Stage_2][/td][/tr]|
+            --?"X[&Affliction_Stage_3]" -ne "X"|&output;+[tr style="vertical-align: top"][td]Stage 3: [/td][td][&Affliction_Stage_3][/td][/tr]|
+            --?"X[&Affliction_Stage_4]" -ne "X"|&output;+[tr style="vertical-align: top"][td]Stage 4: [/td][td][&Affliction_Stage_4][/td][/tr]|
+            --?"X[&Affliction_Stage_5]" -ne "X"|&output;+[tr style="vertical-align: top"][td]Stage 5: [/td][td][&Affliction_Stage_5][/td][/tr]|
+            --?"X[&Affliction_Stage_6]" -ne "X"|&output;+[tr style="vertical-align: top"][td]Stage 6: [/td][td][&Affliction_Stage_6][/td][/tr][br]|
+            --?"X[&Affliction_Max_Duration]" -ne "X"|&output;+[tr style="vertical-align: bottom"][td]Maximum Duration: [/td][td][&Affliction_Max_Duration][/td][/tr]|
+            --?"X[&Affliction_Notes]" -ne "X"|&output;+[tr style="vertical-align: top"][td]Notes: [/td][td][&Affliction_Notes][/td][/tr]|
+            --&output|+[/t]
+            --+|[&output]
+    --<|
+    --X|
+
+--:_ABYSSAL_PLAGUE_INFORMATION|
+    --&Affliction_Name|Abyssal Plague
+    --&Affliction_Level|9
+    --&Affliction_Traits|Disease
+    --&Affliction_Notes|The target can't recover from the Drained condition from Abyssal Plague until the disease is cured.
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|   
+    --&Affliction_Stage_1|Drained 1 (Duration: 1 day)
+    --&Affliction_Stage_2|Drained increases by 2 (Duration: 1 day)
+    --&Affliction_Stage_3|
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_ADVANCED_SCURVY_INFORMATION|
+    --&Affliction_Name|Advanced Scurvy
+    --&Affliction_Level|4
+    --&Affliction_Traits|Disease
+    --&Affliction_Notes|
+    --&Affliction_DC|    
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|4 days   
+    --&Affliction_Stage_1|Enfeebled 1 and the damage dealt by persistent bleed effects is increased by 1 (Duration: 1 day)
+    --&Affliction_Stage_2|Enfeebled 1, Fatigued, and the damage dealt by persistent bleed effects is increased by  1d4 (Duration: 2 days)
+    --&Affliction_Stage_3|Enfeebled 2, Fatigued, and the damage dealt by persistent bleed effects is increased by  1d6 (Duration: 4 days)
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_BLIGHTBURN_SICKNESS_INFORMATION|
+    --&Affliction_Name|Blightburn Sickness
+    --&Affliction_Level|9
+    --&Affliction_Traits|Disease
+    --&Affliction_Notes|Creatures native to the Black Desert are immune, as are creatures who are affected by blightburn sickness but recover from it. The target can't recover from the disease's drained or sickened condition except by magic. [br]The surest way to avoid contracting blightburn sickness is by wearing a blightburn ward, a piece of protective jewelry often found among urdefhans' gear or for sale in Shraen.
+    --&Affliction_DC|32
+    --&Affliction_Save_Type|Fortitude
+    --&Affliction_Max_Duration|   
+    --&Affliction_Stage_1|Drained 1 (Duration: 1 day)
+    --&Affliction_Stage_2|Drained 1 and Sickened 1 (Duration: 1 day)
+    --&Affliction_Stage_3|Drained 2 and Sickened 2 (Duration: 1 week)
+    --&Affliction_Stage_4|Drained 3 and Sickened 3 (Duration: 1 month)
+    --&Affliction_Stage_5|Increase Drained condition by 1 (Duration: 1 year)
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_CORDYCEPS_TOXIN_INFORMATION|
+    --&Affliction_Name|Cordyceps Toxin
+    --&Affliction_Level|
+    --&Affliction_Traits|Poison
+    --&Affliction_Notes|
+    --&Affliction_DC|28
+    --&Affliction_Save_Type|Fortitude
+    --&Affliction_Max_Duration|6 rounds
+    --&Affliction_Stage_1|Stupefied 1 (Duration: 1 round)
+    --&Affliction_Stage_2|Confused (Duration: 1 round)
+    --&Affliction_Stage_3|Controlled (Duration: 1 round)
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_CURSE_OF_DEATH_INFORMATION|
+    --&Affliction_Name|Curse of Death
+    --&Affliction_Level|
+    --&Affliction_Traits|Curse, Death, Void
+    --&Affliction_Notes|This curse ends immediately when the spell ends
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|
+    --&Affliction_Stage_1|4d6 void damage and Fatigued (Duration: 1 round)
+    --&Affliction_Stage_2|8d6 void damage and Fatigued (Duration: 1 round)
+    --&Affliction_Stage_3|12d6 void damage and Fatigued (Duration: 1 round)
+    --&Affliction_Stage_4|death (Duration: None)
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_DIVINE_PLAGUE_INFORMATION|
+    --&Affliction_Name|Divine Plague
+    --&Affliction_Level|1
+    --&Affliction_Traits|Disease
+    --&Affliction_Notes|This curse ends immediately when the spell ends
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|
+    --&Affliction_Stage_1|Clumsy 1, Enfeebled 1, or Stupefied 1 (Duration: 1 round)
+    --&Affliction_Stage_2|Slowed 1 and clumsy 1, Enfeebled 1, or Stupefied 1 (Duration: 1 round)
+    --&Affliction_Stage_3|Clumsy 1, Enfeebled 1, or Stupefied 1 and the target can't recover from the condition until they are cured (Duration: 1 day)
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_GHOUL_FEVER_INFORMATION|
+    --&Affliction_Name|Ghoul Fever
+    --&Affliction_Level|3
+    --&Affliction_Traits|Disease
+    --&Affliction_Notes|
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|
+    --&Affliction_Stage_1|Carrier with no ill effects (Duration: 1 day)
+    --&Affliction_Stage_2|3d8 negative damage and the creature regains half as many Hit Points from all healing (Duration: 1 day)
+    --&Affliction_Stage_3|As stage 2 (Duration: 1 day)
+    --&Affliction_Stage_4|3d8 negative damage and the creature gains no benefit from healing (Duration: 1 day)
+    --&Affliction_Stage_5|As stage 4 (Duration: 1 day)
+    --&Affliction_Stage_6|The creature dies and rises as a {@creature ghoul} at the next midnight (Duration: None) 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_GOBLIN_POX_INFORMATION|
+    --&Affliction_Name|Goblin Pox
+    --&Affliction_Level|1
+    --&Affliction_Traits|Disease
+    --&Affliction_Notes|Goblins and goblin dogs are immune.
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|
+    --&Affliction_Stage_1|Sickened 1 (Duration: 1 round)
+    --&Affliction_Stage_2|Sickened 1 and Slowed 1 (Duration: 1 round)
+    --&Affliction_Stage_3|Sickened 1 and the creature can't reduce its Sickened value below 1 (Duration: 1 day)
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_IMP_VENOM_INFORMATION|
+    --&Affliction_Name|Goblin Pox
+    --&Affliction_Level|3
+    --&Affliction_Traits|Poison
+    --&Affliction_Notes|
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|6 rounds
+    --&Affliction_Stage_1|1d6 poison and Clumsy 1 (Duration: None)
+    --&Affliction_Stage_2|1d6 poison, Clumsy 1, and Slowed 1 (Duration: 1 round.)
+    --&Affliction_Stage_3|
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_INTERNAL_INSURRECTION_INFORMATION|
+    --&Affliction_Name|Internal Insurrection
+    --&Affliction_Level|7
+    --&Affliction_Traits|Disease
+    --&Affliction_Notes|
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|6 rounds
+    --&Affliction_Stage_1|Clumsy 1 (Duration: 1 day)
+    --&Affliction_Stage_2|Clumsy 2 (Duration: 1 day)
+    --&Affliction_Stage_3|Clumsy 2 and Flat-Footed (Duration: 1 day)
+    --&Affliction_Stage_4|Clumsy 3 and Flat-Footed (Duration: 1 day)
+    --&Affliction_Stage_5|Death, and the target's body splits apart into a mass of fragments that crawls outward in a 10-foot-emanation before perishing, leaving a bare skeleton surrounded by gore. (Duration: None)
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_LENG_SPIDER_VENOM_INFORMATION|
+    --&Affliction_Name|Leng Spider Venom
+    --&Affliction_Level|13
+    --&Affliction_Traits|Poison, Incapacitation
+    --&Affliction_Notes|
+    --&Affliction_DC|33
+    --&Affliction_Save_Type|Fortitude
+    --&Affliction_Max_Duration|6 rounds
+    --&Affliction_Stage_1|2d6 poison damage and Drained 1 (1 round)
+    --&Affliction_Stage_2|3d6 poison damage, Drained 2 (1 round)
+    --&Affliction_Stage_3|4d6 poison damage, Drained 2, and Confused (1 round) 
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_PURPLE_WORM_VENOM_INFORMATION|
+    --&Affliction_Name|Purple Worm Venom
+    --&Affliction_Level|11
+    --&Affliction_Traits|Poison
+    --&Affliction_Notes|
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|6 rounds
+    --&Affliction_Stage_1|3d6 poison damage and Enfeebled 2 (Duration: 1 round)
+    --&Affliction_Stage_2|4d6 poison damage and Enfeebled 2 (Duration: 1 round)
+    --&Affliction_Stage_3|6d6 poison damage and Enfeebled 2 (Duration: 1 round)
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_SPIDER_VENOM_INFORMATION|
+    --&Affliction_Name|Spider Venom
+    --&Affliction_Level|1
+    --&Affliction_Traits|Poison
+    --&Affliction_Notes|
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|4 rounds
+    --&Affliction_Stage_1|1d4 poison damage and Enfeebled 1 (Duration: 1 round)
+    --&Affliction_Stage_2|1d4 poison damage and Enfeebled 2 (Duration: 1 round)
+    --&Affliction_Stage_3|
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_SWARMING_WASP_INFORMATION|
+    --&Affliction_Name|Swarming Wasp Venom
+    --&Affliction_Level|7
+    --&Affliction_Traits|Poison
+    --&Affliction_Notes|
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|6 Rounds
+    --&Affliction_Stage_1|2d6 poison damage and Clumsy 1 (Duration: 1 round)
+    --&Affliction_Stage_2|3d6 poison damage and Clumsy 2 (Duration: 1 round)
+    --&Affliction_Stage_3|
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_TOR_LINNORM_VENOM_INFORMATION|
+    --&Affliction_Name|Tor Linnorm Venom
+    --&Affliction_Level|17
+    --&Affliction_Traits|Poison, Injury, Fire
+    --&Affliction_Notes|
+    --&Affliction_DC|33
+    --&Affliction_Save_Type|Fortitude
+    --&Affliction_Max_Duration|10 rounds
+    --&Affliction_Stage_1|8d6 fire damage and Drained 1 (1 round)
+    --&Affliction_Stage_2|12d6 poison damage, Drained 2 (1 round)
+    --&Affliction_Stage_3|
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
+
+--:_WYVERN_VENOM_INFORMATION|
+    --&Affliction_Name|Wyvern Venom
+    --&Affliction_Level|9
+    --&Affliction_Traits|Poison
+    --&Affliction_Notes|
+    --&Affliction_DC|
+    --&Affliction_Save_Type|
+    --&Affliction_Max_Duration|6 rounds
+    --&Affliction_Stage_1|5d6 poison damage (Duration: 1 round;)
+    --&Affliction_Stage_2|6d6 poison damage (Duration: 1 round;)
+    --&Affliction_Stage_3|8d6 poison damage (Duration: 1 round)
+    --&Affliction_Stage_4|
+    --&Affliction_Stage_5|
+    --&Affliction_Stage_6| 
+    --^PRINT_AFFLICTION_DATA|
